@@ -7,12 +7,11 @@
                         <th>userid</th>
                         <th>username</th>
                         <th>age</th>
-                        <th>OP</th>
+                        <th>OP(operation)</th>
                 </tr>
 
 
                 <tr  v-for="(elem,indexnum) in userArr"  :key="elem.userId">
-                        <!-- <td>{{indexnum}}</td> -->
                         <td>{{elem.userId}}</td>
                         <td>{{elem.userName}}</td>
                         <td>{{elem.userAge}}</td>
@@ -75,10 +74,7 @@ export default {
         },
         
         add(){
-
                         let newUserid=this.userArr[this.userArr.length-1].userId+1
-
-
                         this.userArr.push(
                        {
                         userId: newUserid,
