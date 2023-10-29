@@ -3,7 +3,9 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>|
     <router-link to="/myview">MyView</router-link>|
-    <router-link to="/userinfo">Userinfo</router-link>
+    <router-link to="/userinfo">Userinfo</router-link>|
+     <router-link to="/parent">parent</router-link>|
+     <router-link to="/parentview">parentview</router-link>
   </nav>
   <router-view/>
 </template>
