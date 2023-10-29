@@ -1,5 +1,9 @@
 <template>
         <div>child1component</div>
+        <div>child1component $store.state.num:{{$store.state.num}}</div>
+        <div>child1component $store.getters.newnum:{{$store.getters.newnum}}</div>
+
+
         msga:<input v-model="msga">
         <button @click="sendToParent">sendToParent</button>
         <div> 
@@ -7,6 +11,7 @@
 
         </grandchild1component>
         </div>
+        
 
 
 </template>
@@ -27,8 +32,7 @@ methods:{
         sendToParent(){
                  this.$emit('childAmsg', this.msga);
         }
-},
-components:{
+},components:{
         grandchild1component
 }
 

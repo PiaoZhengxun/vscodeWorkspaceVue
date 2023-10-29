@@ -1,6 +1,11 @@
 <template>
      <div>lifeCycleView</div>
   
+    <div>
+        <div ref="username">{{msg}}</div>
+
+    </div>
+
 
    <div>
    {{msg}}
@@ -60,6 +65,10 @@ export default {
             mounted(){
                  console.log('mounted  Vue this:',this);
                 this.msg="mounted msg"
+
+                let domObj = this.$refs.username;
+                console.log(domObj);
+                // domObj.style.display = 'none';
             } ,
 
             beforeUpdate(){
