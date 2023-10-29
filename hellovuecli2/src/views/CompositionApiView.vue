@@ -13,23 +13,30 @@
   <div>
     <SubCompositionApiComponent :msg="msga"    @childmsg="getFromChild"></SubCompositionApiComponent>
   </div>
+  <Sub2CompositionApiComponent></Sub2CompositionApiComponent>
   <div>
      get msgc from child. msgc:{{msgc}}
   </div>
+  <div>
+    <button @click="jumpToAboutView">jumpToAboutView</button>
+  </div>
+  
 
 </template>
 
 <script>
 import {ref,computed,watch,toRefs,reactive,provide} from 'vue';
+import { useRouter } from "vue-router";
 
 import SubCompositionApiComponent from '../components/CompositionApiComponent/SubCompositionApiComponent.vue'
+import Sub2CompositionApiComponent from '../components/CompositionApiComponent/Sub2CompositionApiComponent.vue'
 
 export default {
   
 
     setup(props,context){
 
-     
+     const router = useRouter();
 
 
      console.log('setup aaa '); 
@@ -64,8 +71,10 @@ export default {
     function getFromChild(param){
         state.msgc=param
 
+    }
 
-
+    function jumpToAboutView(){
+        router.push({path:'/about',query:{name:'tom'}});
     }
 
     function add(){
@@ -83,14 +92,15 @@ export default {
      return{
     
       ...toRefs(state), 
-      add,add2,getFromChild
+      add,add2,getFromChild,jumpToAboutView
 
      }
 
 
     },
     components:{
-      SubCompositionApiComponent
+      SubCompositionApiComponent,
+      Sub2CompositionApiComponent
     }
 
 
