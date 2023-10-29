@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import About from '../../../hellovuecli/src/components/About.vue'
+// import About from '../../../hellovuecli/src/components/About.vue'
 export default {
   data(){
         return{
@@ -26,7 +26,7 @@ export default {
                         userid:""}
         }
   },      
-  components: { About },
+//   components: { About },
         name:"ParentView"
 
 }

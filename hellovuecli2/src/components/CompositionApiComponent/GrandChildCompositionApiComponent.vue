@@ -43,10 +43,11 @@ export default {
     onBeforeUpdate(() => {
       console.log("onBeforeUpdate!");
     })
- 
+
     onUpdated(() => {
       console.log("onUpdated!");
      
+
 
 
     })

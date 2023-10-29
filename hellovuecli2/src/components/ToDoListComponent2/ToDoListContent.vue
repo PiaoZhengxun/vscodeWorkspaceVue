@@ -53,13 +53,14 @@
 
 <script>
 
+import { useStore } from "vuex";
 import {ref,toRefs,reactive, watch,computed } from 'vue';
 
 export default {
 
    
         setup(props, context){
-                
+                const store = useStore();
                 // let todoObj=props.todoObj
                 // console.log("todolistconent setup todoObj",todoObj)
 
@@ -83,9 +84,9 @@ export default {
 
                 })
            
-                 watch(() =>props.todoObj,(newValue, oldValue) => {
-                                // console.log("todolistContentWatch  ")
-                                // console.log(newValue, oldValue);
+                 watch(() =>store.getters.getTodo,(newValue, oldValue) => {
+                                console.log("todolistContentWatch  ")
+                                console.log(newValue, oldValue);
                                 addTitleToTodoList(newValue)
 
                         }
@@ -154,11 +155,7 @@ export default {
 
 
 
-       props: {
-        todoObj: {
-                  type: Object,
-                        }
-        },
+      
 };
 
 

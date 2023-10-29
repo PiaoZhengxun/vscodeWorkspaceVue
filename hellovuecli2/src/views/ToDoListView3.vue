@@ -1,58 +1,63 @@
 <template>
+        <div class="header">
+                <todolistheader></todolistheader>
 
-  <!-- <div>header</div> -->
- <label for="title">ToDoList</label>
- <input type="text" v-model="titleValue" id="title" name="title" placeholder="AddToDo" required="required" autocomplete="off" @keyup.enter="addTitleToTodoList" >
+        </div>
+        <div class="content">
+             <todolistcontent ></todolistcontent>
+        </div>
+        <div class="footer">
+              <todolistfooter></todolistfooter>
+              
+
+        </div> 
+
+
+
 
 
 
 </template>
 
 <script>
-
 import {toRefs,reactive} from 'vue';
+import todolistheader from '@/components/ToDoListComponent2/ToDoListHeader.vue'
+import todolistfooter from '@/components/ToDoListComponent2/ToDoListFooter.vue'
+import todolistcontent from '@/components/ToDoListComponent2/ToDoListContent.vue'
 
 export default {
-        setup(props, context){
-                
+         setup(){
+        
                 const state=reactive({
-                        titleValue:null,
-                    
+                       todoObj:null
+                      
 
                 })
-               
-                function addTitleToTodoList(){
-                        let todo={"title":state.titleValue,"done":false};
-                        // let todo="aaaaaaaa";
-                        context.emit("childtodo", todo);
-                        state.titleValue=null;
 
-
-                        // state.toDoList.push(todo)
-                        // console.log("toDoList:",state.toDoList)
-                        // state.titleValue=null;
-
-                        // state.toDoListCountNum=state.toDoList.length
-
-                }
-
-            
+              
+                
                 return{
                         ...toRefs(state),
-                        addTitleToTodoList
+                        
+                      
                 }
 
 
+        },
+
+
+        components:{
+                todolistheader,todolistfooter,todolistcontent
         }
 
-
-
 }
-
 </script>
 
+
+
 <style scoped>
- label{float:left;width:100px;line-height:50px;color:#DDD;font-size:24px;cursor:pointer;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+       
+        label{float:left;width:100px;line-height:50px;color:#DDD;font-size:24px;cursor:pointer;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
         .header input{float:right;width:60%;height:24px;margin-top:12px;text-indent:10px;border-radius:5px;box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;border:none}
         input:focus{outline-width:0}
         h2{position:relative;}
@@ -70,5 +75,7 @@ export default {
         .footer a{color:#666;text-decoration:none;color:#999;}
         @media screen and (max-device-width: 620px) {section{width:96%;padding:0 2%;}}
         @media screen and (min-width: 620px) {section{width:600px;padding:0 10px;}}
+
+
 
 </style>

@@ -15,8 +15,8 @@ import LifeCycleView from '../views/LifeCycleView.vue'
 import BeforeLoginView2 from '../views/BeforeLoginView2.vue'
 import CompositionApiView  from '../views/CompositionApiView.vue'
 import TodoList  from '../views/ToDoListView.vue'
-
-
+import TodoList2  from '../views/ToDoListView2.vue'
+import TodoList3 from '../views/ToDoListView3.vue'
 const routes = [
   {
     path:"/compositionapi",
@@ -127,8 +127,20 @@ const routes = [
     path: '/todoList',
     name:"todoList",
     component: TodoList
+},
+{
+ // path: '/parentview/child2/:id/:name',
+ path: '/todoList2',
+ name:"todoList2",
+ component: TodoList2
 }
-
+,
+{
+ // path: '/parentview/child2/:id/:name',
+ path: '/todoList3',
+ name:"todoList3",
+ component: TodoList3
+}
 ]
 
 const router = createRouter({

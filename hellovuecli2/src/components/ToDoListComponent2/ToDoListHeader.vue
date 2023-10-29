@@ -11,10 +11,17 @@
 <script>
 
 import {toRefs,reactive} from 'vue';
+import { useStore } from "vuex";
+
+
+
 
 export default {
         setup(props, context){
-                
+                const store = useStore();
+
+
+
                 const state=reactive({
                         titleValue:null,
                     
@@ -24,7 +31,10 @@ export default {
                 function addTitleToTodoList(){
                         let todo={"title":state.titleValue,"done":false};
                         // let todo="aaaaaaaa";
-                        context.emit("childtodo", todo);
+                        // context.emit("childtodo", todo);
+                        store.commit('setTodo',todo);      
+
+
                         state.titleValue=null;
 
 

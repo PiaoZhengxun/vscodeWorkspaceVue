@@ -1,54 +1,13 @@
 <template>
-
-  <!-- <div>header</div> -->
- <label for="title">ToDoList</label>
- <input type="text" v-model="titleValue" id="title" name="title" placeholder="AddToDo" required="required" autocomplete="off" @keyup.enter="addTitleToTodoList" >
-
-
-
+  
+			Copyright © 2014 todolist.cn <a href="javascript:clear();">clear</a>
+	
 </template>
 
 <script>
-
-import {toRefs,reactive} from 'vue';
-
 export default {
-        setup(props, context){
-                
-                const state=reactive({
-                        titleValue:null,
-                    
-
-                })
-               
-                function addTitleToTodoList(){
-                        let todo={"title":state.titleValue,"done":false};
-                        // let todo="aaaaaaaa";
-                        context.emit("childtodo", todo);
-                        state.titleValue=null;
-
-
-                        // state.toDoList.push(todo)
-                        // console.log("toDoList:",state.toDoList)
-                        // state.titleValue=null;
-
-                        // state.toDoListCountNum=state.toDoList.length
-
-                }
-
-            
-                return{
-                        ...toRefs(state),
-                        addTitleToTodoList
-                }
-
-
-        }
-
-
 
 }
-
 </script>
 
 <style scoped>
@@ -70,5 +29,4 @@ export default {
         .footer a{color:#666;text-decoration:none;color:#999;}
         @media screen and (max-device-width: 620px) {section{width:96%;padding:0 2%;}}
         @media screen and (min-width: 620px) {section{width:600px;padding:0 10px;}}
-
 </style>

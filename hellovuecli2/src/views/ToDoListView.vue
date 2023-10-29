@@ -10,11 +10,11 @@
         <div class="content">
                 <!-- <todolistcontent></todolistcontent> -->
                 
-			<h2 onclick="save()">
+			<h2 >
                                 <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">ongoing</font>
                                 </font>
-                                <span id="todocount">2</span>
+                                <span id="todocount">{{toDoListCountNum}}</span>
                         </h2>
                        
 
@@ -29,15 +29,24 @@
                                                 </font>
                                         </font>
                                 </p>
-                                <a href="javascript:remove(6)">-</a></li>
+                                <a @click="removeToDoList(index)">-</a></li>
                         
                         </ol>
-                        <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Has been completed</font></font><span id="donecount"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></span></h2>
+                        <h2><font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Has been completed</font></font>
+                                <span id="donecount">
+                                        <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">
+                                                {{doneListCountNum}}
+                                        </font>
+                                </font>
+                                </span></h2>
 			
                         
                         <ul id="donelist">
                               <li draggable="true" v-for="(item,index)  in doneList ">
-                                <input type="checkbox" onchange="update(0,&quot;done&quot;,false)" checked="checked">
+                                <!-- <input type="checkbox" onchange="update(0,&quot;done&quot;,false)" checked="checked"> -->
+                                <input type="checkbox" checked="checked"  v-model="checknamearrayDoneList"  @click="addToTodoList(index)"   :value="index">
                                 <p id="p-0" onclick="edit(0)">
                                        <font style="vertical-align: inherit;">
                                                 <font style="vertical-align: inherit;">
@@ -45,7 +54,7 @@
                                                 </font>
                                         </font>
                                 </p>
-                                <a href="javascript:remove(0)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></a>
+                                <a @click="removeDoneList(index)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></a>
                               </li>
                         </ul>
         </div>
@@ -78,16 +87,41 @@ export default {
                         titleValue:null,
                         toDoList:[],
                         doneList:[],
-                       checknamearray:[]
+                       checknamearray:[],
+                       checknamearrayDoneList:[],
+                       toDoListCountNum:0,
+                       doneListCountNum:0
 
                 })
                     
+                function removeToDoList(index){
+                        state.toDoList.splice(index,1)
+                        state.toDoListCountNum=state.toDoList.length
+                }
+
+                function removeDoneList(index){
+                        state.doneList.splice(index,1)
+                        state.doneListCountNum=state.doneList.length
+                }
+
 
                 function addTitleToTodoList(){
                         let todo={"title":state.titleValue,"done":false};
                         state.toDoList.push(todo)
                         console.log("toDoList:",state.toDoList)
                         state.titleValue=null;
+
+                        state.toDoListCountNum=state.toDoList.length
+
+                }
+
+                function addToTodoList(index){
+                              let indexValue=state.doneList[index]
+                                state.toDoList.push(indexValue)
+                                state.doneList.splice(index,1)
+                                state.checknamearrayDoneList.splice(0)// clear
+                                state.toDoListCountNum=state.toDoList.length
+                                state.doneListCountNum=state.doneList.length
                 }
 
                 function addToDoneList(index){
@@ -98,6 +132,9 @@ export default {
                         state.checknamearray.splice(0) // clear
                         console.log("toDoList",state.toDoList)
                         console.log("doneList",state.doneList)
+
+                        state.toDoListCountNum=state.toDoList.length
+                        state.doneListCountNum=state.doneList.length
                        
 
 
@@ -105,7 +142,7 @@ export default {
                 }
                 return{
                         ...toRefs(state),
-                        addTitleToTodoList,addToDoneList
+                        addTitleToTodoList,addToDoneList,removeToDoList,removeDoneList,addToTodoList
                 }
 
 

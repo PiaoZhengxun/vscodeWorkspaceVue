@@ -45,10 +45,41 @@ methods:{
               
 
 
-                this.$router.push( {path:'/beforeLogin/LoginView', query:{ userid:this.userinfoFromBackEnd.userid, username:this.userinfoFromBackEnd.username,nickname:this.userinfoFromBackEnd.nickname}} );
+                this.$router.push( {path:'/beforeLogin/LoginView', query:{ userid:this.userinfoFromBackEnd.userid, username:this.userinfoFromBackEnd.username}} );
         } 
               
-}
+},
+           beforeCreate() {
+                console.log('RegisterView beforeCreate ');
+            },
+            //Vue实例创建后
+            created() {
+                console.log('RegisterView created ');
+            },
+            //挂载DOM前
+            beforeMount() {
+                console.log('RegisterView beforeMount ');
+            },
+            //挂载DOM后
+            mounted() {
+                console.log('RegisterView mounted ');
+            },
+            //数据更新前
+            beforeUpdate() {
+                console.log('RegisterView beforeUpdate ');
+            },
+            //数据更新后
+            updated() {
+                console.log('RegisterView updated');
+            },
+            //实例销毁前
+            beforeUnmount() {
+                console.log('RegisterView beforeUnmount ');
+            },
+            //实例销毁后
+            unmounted() {
+                console.log('RegisterView unmounted ');
+            },
 }
 </script>
 

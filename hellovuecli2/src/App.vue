@@ -11,6 +11,8 @@
      <router-link to="/beforeLogin2">beforeLogin2</router-link>|
      <router-link to="/compositionapi">compositionapi</router-link>|
      <router-link to="/todoList">todoList</router-link>|
+     <router-link to="/todoList2">todoList2</router-link>|
+     <router-link to="/todoList3">todoList3</router-link>|
   </nav>
   <router-view/>
 </template>

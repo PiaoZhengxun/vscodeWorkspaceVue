@@ -3,10 +3,14 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     num:0,
-    msgGrandChild:""
+    msgGrandChild:"",
+    todo:null,
     
   },
   getters: {
+    getTodo(state){
+       return state.todo
+    },
     newnum(state){
       return state.num ;
     },
@@ -15,6 +19,9 @@ export default createStore({
     }
   },
   mutations: {
+    setTodo(state,param){
+      state.todo = param;
+    },
     setnum(state,param){
       state.num += param;
     },

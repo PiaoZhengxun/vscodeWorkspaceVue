@@ -7,7 +7,7 @@
 <script>
 export default {
  name:"RegisterComponent",
- beforeCreate() {
+            beforeCreate() {
                 console.log('RegisterComponent beforeCreate ');
             },
             //Vue实例创建后
