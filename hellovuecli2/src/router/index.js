@@ -13,9 +13,14 @@ import RegisterView from '../views/BeforeLoginView/RegisterView.vue'
 
 import LifeCycleView from '../views/LifeCycleView.vue'
 import BeforeLoginView2 from '../views/BeforeLoginView2.vue'
-
+import CompositionApiView  from '../views/CompositionApiView.vue'
 
 const routes = [
+  {
+    path:"/compositionapi",
+    name:"compositionapi",
+    component:CompositionApiView,
+  },
   {
     path:"/lifeCycleView",
     name:"lifeCycleView",

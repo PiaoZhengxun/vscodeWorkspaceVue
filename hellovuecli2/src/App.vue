@@ -9,6 +9,7 @@
      <router-link to="/beforeLogin">beforeLogin</router-link>|
      <router-link to="/lifeCycleView">lifeCycleView</router-link>|
      <router-link to="/beforeLogin2">beforeLogin2</router-link>|
+     <router-link to="/compositionapi">compositionapi</router-link>|
   </nav>
   <router-view/>
 </template>
