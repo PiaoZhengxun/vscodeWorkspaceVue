@@ -17,6 +17,10 @@ import CompositionApiView  from '../views/CompositionApiView.vue'
 import TodoList  from '../views/ToDoListView.vue'
 import TodoList2  from '../views/ToDoListView2.vue'
 import TodoList3 from '../views/ToDoListView3.vue'
+import TodoList4 from '../views/ToDoListView4.vue'
+
+import AjaxRequestView from '../views/AjaxRequestView.vue'
+
 const routes = [
   {
     path:"/compositionapi",
@@ -140,6 +144,18 @@ const routes = [
  path: '/todoList3',
  name:"todoList3",
  component: TodoList3
+},
+{
+ // path: '/parentview/child2/:id/:name',
+ path: '/todoList4',
+ name:"todoList4",
+ component: TodoList4
+},
+{
+ // path: '/parentview/child2/:id/:name',
+ path: '/ajaxRequestView',
+ name:"ajaxRequestView",
+ component: AjaxRequestView
 }
 ]
 

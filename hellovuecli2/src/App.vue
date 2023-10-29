@@ -13,6 +13,8 @@
      <router-link to="/todoList">todoList</router-link>|
      <router-link to="/todoList2">todoList2</router-link>|
      <router-link to="/todoList3">todoList3</router-link>|
+     <router-link to="/todoList4">todoList4</router-link>|
+     <router-link to="/ajaxRequestView">ajaxRequestView</router-link>|
   </nav>
   <router-view/>
 </template>
