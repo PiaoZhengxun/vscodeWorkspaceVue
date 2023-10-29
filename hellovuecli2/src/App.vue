@@ -10,20 +10,25 @@
      <router-link to="/lifeCycleView">lifeCycleView</router-link>|
      <router-link to="/beforeLogin2">beforeLogin2</router-link>|
      <router-link to="/compositionapi">compositionapi</router-link>|
+     <router-link to="/todoList">todoList</router-link>|
   </nav>
   <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
-  color: #2c3e50;
-}
+ body {margin:0;padding:0;font-size:16px;background: #CDCDCD;}
+        .header {height:50px;background:#333;background:rgba(47,47,47,0.98);}
+        .content{margin:0 auto;}
 
-nav {
+/* #app { */
+  /* font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  /* text-align: center; */
+  /* color: #2c3e50; */
+/* } */
+
+/* nav {
   padding: 30px;
 }
 
@@ -34,5 +39,5 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>

@@ -14,6 +14,8 @@ import RegisterView from '../views/BeforeLoginView/RegisterView.vue'
 import LifeCycleView from '../views/LifeCycleView.vue'
 import BeforeLoginView2 from '../views/BeforeLoginView2.vue'
 import CompositionApiView  from '../views/CompositionApiView.vue'
+import TodoList  from '../views/ToDoListView.vue'
+
 
 const routes = [
   {
@@ -117,8 +119,15 @@ const routes = [
         name:"Child2View",
         component: Child2View
     }
+    
 ]
-  }
+  },
+   {
+    // path: '/parentview/child2/:id/:name',
+    path: '/todoList',
+    name:"todoList",
+    component: TodoList
+}
 
 ]
 
