@@ -19,6 +19,8 @@ import TodoList2  from '../views/ToDoListView2.vue'
 import TodoList3 from '../views/ToDoListView3.vue'
 import TodoList4 from '../views/ToDoListView4.vue'
 
+import ElementPlustest1 from '../views/Elementplustest1.vue'
+
 import AjaxRequestView from '../views/AjaxRequestView.vue'
 
 const routes = [
@@ -156,6 +158,12 @@ const routes = [
  path: '/ajaxRequestView',
  name:"ajaxRequestView",
  component: AjaxRequestView
+},
+{
+ // path: '/parentview/child2/:id/:name',
+ path: '/elementplus1',
+ name:"elementplus1",
+ component: ElementPlustest1
 }
 ]
 

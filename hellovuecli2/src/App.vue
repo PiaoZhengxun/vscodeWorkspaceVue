@@ -15,14 +15,15 @@
      <router-link to="/todoList3">todoList3</router-link>|
      <router-link to="/todoList4">todoList4</router-link>|
      <router-link to="/ajaxRequestView">ajaxRequestView</router-link>|
+      <router-link to="/elementplus1">elementplus1</router-link>|
   </nav>
   <router-view/>
 </template>
 
 <style>
- body {margin:0;padding:0;font-size:16px;background: #CDCDCD;}
+ /* body {margin:0;padding:0;font-size:16px;background: #CDCDCD;}
         .header {height:50px;background:#333;background:rgba(47,47,47,0.98);}
-        .content{margin:0 auto;}
+        .content{margin:0 auto;} */
 
 /* #app { */
   /* font-family: Avenir, Helvetica, Arial, sans-serif;

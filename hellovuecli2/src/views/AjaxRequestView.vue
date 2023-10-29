@@ -4,7 +4,9 @@
         <div>
                 <button @click="sendRequestToBackEnd">sendRequestToBackEnd</button>
                 <div>
-                        <input v-model="state.ename"  /><input v-model="state.deptno"/>
+                      <div>state.ename<input v-model="state.ename"  /><input v-model="state.deptno"/></div>  
+
+                     <div> state.userinfoRequest.ename <input v-model="state.userinfoRequest.ename"  /><input v-model="state.userinfoRequest.deptno"/></div>   
  <button @click="sendRequestToBackEndWithParams">sendRequestToBackEndWithParams</button>
                 </div>
                 <button @click="sendPostRequestToBackEnd">sendPostRequestToBackEnd</button>
@@ -32,6 +34,10 @@ import {reactive} from 'vue'
 const state=reactive({
         ename:null,
         deptno:0,
+        userinfoRequest:{
+                 ename:null,
+                  deptno:0,
+        },
         userinfos:[],
         msg:"aaaa",
         userinfo1:{}
@@ -39,11 +45,8 @@ const state=reactive({
 
 })
 function sendPostRequestToBackEnd(){
-        axios.post("http://127.0.0.1:8080/testmybatisplus/emp/getEmpsByQueryCondition2", 
-        {
-         deptno: state.deptno,
-         ename:state.ename
-        })
+        axios.post("/testmybatisplusbackendserver/testmybatisplus/emp/getEmpsByQueryCondition2", 
+        state.userinfoRequest)
         .then(function (response) {
          console.log(response)
                         state.userinfos=response.data.obj
@@ -75,7 +78,7 @@ function sendRequestToBackEndWithParams(){
         //         });
  axios
                 .get(
-                "http://127.0.0.1:8080/testmybatisplus/emp/getEmplistByCondition2"
+                "/testmybatisplusbackendserver/testmybatisplus/emp/getEmplistByCondition2"
                 , {
                 params: {
                         deptno: state.deptno,
@@ -103,7 +106,7 @@ function sendRequestToBackEndWithParams(){
 function sendRequestToBackEnd(){
         axios
                 .get(
-                "http://127.0.0.1:8080/testmybatisplus/emp/getAllEmps"
+                "/testmybatisplusbackendserver/testmybatisplus/emp/getAllEmps"
                 )
                 .then((response) => {
                         console.log(response)
