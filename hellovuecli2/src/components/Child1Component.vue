@@ -27,7 +27,8 @@ methods:{
         sendToParent(){
                  this.$emit('childAmsg', this.msga);
         }
-},components:{
+},
+components:{
         grandchild1component
 }
 

@@ -9,8 +9,7 @@
                 <button @click="msgbtozzzzz">msgbtozzzzz</button>
         </div>
         <div>
-                msgc:  <input v-model="msgc"  type="text"   > 
-                <button @click="sendToParent">sendToParent</button>
+                      msgc:  <input v-model="msgc"  type="text"   > <button @click="sendToParent">sendToParent</button>
 
         </div>
 </div>

@@ -5,7 +5,10 @@
     <router-link to="/myview">MyView</router-link>|
     <router-link to="/userinfo">Userinfo</router-link>|
      <router-link to="/parent">parent</router-link>|
-     <router-link to="/parentview">parentview</router-link>
+     <router-link to="/parentview">parentview</router-link>|
+     <router-link to="/beforeLogin">beforeLogin</router-link>|
+     <router-link to="/lifeCycleView">lifeCycleView</router-link>|
+     <router-link to="/beforeLogin2">beforeLogin2</router-link>|
   </nav>
   <router-view/>
 </template>

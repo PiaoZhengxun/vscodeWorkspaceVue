@@ -12,7 +12,8 @@ export default {
         return{
 
         }
-   },props:["msgcc"],
+   },
+   props:["msgcc"],
 
    inject: {
     msgccc: { value: "msgccc", default: null },

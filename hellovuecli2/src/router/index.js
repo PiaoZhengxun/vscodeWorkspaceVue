@@ -7,8 +7,46 @@ import ParentComponent from '../views/ParentComponent.vue'
 import ParentView from '../views/ParentView.vue'
 import Child1View from '../views/ParentView/Child1View.vue'
 import Child2View from '../views/ParentView/Child2View.vue'
+import BeforeLoginView from '../views/BeforeLoginView.vue'
+import LoginView from '../views/BeforeLoginView/LoginView.vue'
+import RegisterView from '../views/BeforeLoginView/RegisterView.vue'
+
+import LifeCycleView from '../views/LifeCycleView.vue'
+import BeforeLoginView2 from '../views/BeforeLoginView2.vue'
+
 
 const routes = [
+  {
+    path:"/lifeCycleView",
+    name:"lifeCycleView",
+    component:LifeCycleView,
+  },
+  {
+      path:"/beforeLogin",
+      name:"beforeLogin",
+      component:BeforeLoginView,
+      children: [               //配置子路由
+      {
+          path: '/beforeLogin',
+          redirect: '/beforeLogin/LoginView'
+      }, {
+          path: '/beforeLogin/LoginView',
+          name:"LoginView",
+          component: LoginView
+      }, {
+          path: '/beforeLogin/RegisterView',
+          name:"RegisterView",
+          component: RegisterView
+      }
+    ]
+  },
+  
+  {
+      path:"/beforeLogin2",
+      name:"beforeLogin2",
+      component:BeforeLoginView2
+  },
+
   {
     path: '/',            //根路由
 		redirect: '/home'     //把根路由重定向到home
@@ -69,7 +107,8 @@ const routes = [
         name:"Child1View",
         component: Child1View
     }, {
-        path: '/parentview/child2/:id/:name',
+        // path: '/parentview/child2/:id/:name',
+        path: '/parentview/child2',
         name:"Child2View",
         component: Child2View
     }
@@ -79,9 +118,29 @@ const routes = [
 ]
 
 const router = createRouter({
-  // history: createWebHistory(process.env.BASE_URL),
-  history: createWebHashHistory(),
+  history: createWebHistory(process.env.BASE_URL),
+  // history: createWebHashHistory(),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  //创建守卫规则集合(这里表示'/home'与'/news'路径是需要权限验证的)
+  const nextRoute = ['/home', '/about'];
+  // 使用isLogin来模拟是否登录
+  let isLogin = true;
+  // 判断to.path(要跳转的路径)是否是需要权限验证的
+  if (nextRoute.indexOf(to.path) >= 0) {
+      if (!isLogin) {
+          router.push({
+              path: '/beforeLogin/LoginView'
+          })
+          //location.reload(); 
+      }
+  }
+  next(); //必须要有
+});
+
+
+
 
 export default router
