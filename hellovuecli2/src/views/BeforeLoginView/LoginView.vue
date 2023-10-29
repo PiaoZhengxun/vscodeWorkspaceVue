@@ -22,7 +22,7 @@
     <el-row>
         <el-col :span="6"></el-col>
         <el-col :span="3">username:</el-col>
-        <el-col :span="9"> <el-input v-model="state.userinfo.username" placeholder="Please input username" />   </el-col>
+        <el-col :span="9"> <el-input v-model="userinfo.username" placeholder="Please input username" />   </el-col>
         <el-col :span="6"></el-col>
     </el-row>
     <el-row>
@@ -30,7 +30,7 @@
         <el-col :span="3">password:</el-col>
         <el-col :span="9"> 
             <el-input
-                v-model="state.userinfo.password"
+                v-model="userinfo.password"
                 type="password"
                 placeholder="Please input password"
                 show-password
@@ -82,6 +82,11 @@ const router = useRouter();
       }
     })
 
+
+       let { userinfo } = toRefs(state) 
+
+
+
 function login(){
      axios.post("/testmybatisplusbackendserver/testmybatisplus/userinfo/login", 
         state.userinfo
@@ -98,10 +103,21 @@ function login(){
                 type: 'success',
             })
 
-            router.push({path:'/home',query:{
-                nickname:response.data.obj.nickname,
-                userid:response.data.obj.userid,
-            }});
+            
+
+
+
+            // window.sessionStorage.setItem("userid",response.data.obj.userid)
+            // window.sessionStorage.setItem("nickname",response.data.obj.nickname)
+
+           
+            window.sessionStorage.setItem("userinfo", JSON.stringify(response.data.obj))
+
+
+                // nickname:response.data.obj.nickname,
+                // userid:response.data.obj.userid,
+            
+            router.push({path:'/home'});
         }else{
              ElMessage({
                 message: response.data.msg,

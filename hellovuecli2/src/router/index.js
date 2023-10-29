@@ -23,6 +23,10 @@ import ElementPlustest1 from '../views/Elementplustest1.vue'
 
 import AjaxRequestView from '../views/AjaxRequestView.vue'
 
+import main from '../views/HomeView/main.vue'
+import userinfolist from '../views/HomeView/userinfolist.vue'
+import news from '../views/HomeView/news.vue'
+
 const routes = [
   {
     path:"/compositionapi",
@@ -67,7 +71,26 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    children: [               //配置子路由
+    {
+        path: '/home',
+        redirect: '/home/main'
+    }, {
+        path: '/home/main',
+        name:"main",
+        component: main
+    }, {
+      path: '/home/userinfolist',
+      name:"userinfolist",
+      component: userinfolist
+  },{
+      path: '/home/news',
+      name:"news",
+      component: news
+  }
+    
+    ]
   },
   {
     path: '/about',
@@ -177,7 +200,19 @@ router.beforeEach((to, from, next) => {
   //创建守卫规则集合(这里表示'/home'与'/news'路径是需要权限验证的)
   const nextRoute = ['/home', '/about'];
   // 使用isLogin来模拟是否登录
-  let isLogin = true;
+
+
+  let userinfoStr=   window.sessionStorage.getItem("userinfo")
+
+  console.log("router beforeEach",userinfoStr)
+  let isLogin=null;
+  if(userinfoStr!=null && userinfoStr!=""){
+    isLogin = true;
+  }else{
+    isLogin =false;
+  }
+
+
   // 判断to.path(要跳转的路径)是否是需要权限验证的
   if (nextRoute.indexOf(to.path) >= 0) {
       if (!isLogin) {
